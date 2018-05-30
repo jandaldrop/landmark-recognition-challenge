@@ -18,13 +18,13 @@ Main challenges:
 
 ### Full solution and validation result
 
-My full solution consists of two stages, the first stage is given by this NN classifier, which proposes a single landmark and a confidence score per image. This resulted in a (public/private) GAP of 0.145/0.149 and would have corresponded to the 34th place. (On an easy dev set comparable to the training data without non-landmark images, this model has a GAP of about 0.96).
+My full solution consists of two stages, the first stage is given by the NN classifier in `landmarks-xception.ipynb`, which proposes a single landmark and a confidence score per image. This resulted in a (public/private) GAP of 0.145/0.149 and would have corresponded to the 34th place. (On an easy dev set comparable to the training data without non-landmark images, this model has a GAP of about 0.96).
 
 As a second step I used Google DELF features (https://arxiv.org/abs/1612.06321) to rescore every image by comparing it to (up to) 32 landmark images of the proposed category, the maximal number of matching features after geometric verification is used as a DELF-based score. The source code for the DELF prediction and analysis was developed based on the examples in the tensorflow repository.
 
 The total confidence for the prediction is then computed by a weighted average of NN and DELF confidence, so that the NN and the DELF confidences contribute roughly half for images with typical DELF-based scores (wheras very high DELF scores dominate the average).
 
-The full model lead to a GAP of (public/private) 0.211/0.192, which resultet in the 19th place (out of 483).
+The full model lead to a GAP of (public/private) 0.211/0.192, which resulted in the 19th place (out of 483).
 
 ### Finetuning a pretrained Xception-CNN with a generalized mean pool
 
