@@ -34,11 +34,7 @@ The model was trained on the about 1,200,000 landamrk images plus about 200,000 
 
 #### Generalized average pool
 
-A generalized average pooling layer has been shown to improve landmark recognition performance (https://arxiv.org/pdf/1711.02512.pdf). It is given by
-\begin{equation}
-f_k=\left(\frac{1}{N} \sum_i a_{ik}^p \right)^{\frac{1}{p}},
-\end{equation}
-where $a_{ik}$ denote the activations in the last block of the CNN in the channel $k$. The advantage seems to be that the network can better suppress non-relevant features. The exponent $p\approx2.2$ was learned during training. 
+A generalized average pooling layer has been shown to improve landmark recognition performance (https://arxiv.org/pdf/1711.02512.pdf). The advantage seems to be that the network can better suppress non-relevant features. The exponent p=2.2 was learned during training. 
 
 #### Reweighted loss function
 
@@ -50,4 +46,6 @@ To better supervise training, I implemented a custom metric `batch_GAP`, which c
 
 #### 22 crops at prediction
 
-At prediction, I used several (22 for the scores given above) crops of each image and calculated the image category and confidence by a simple voting procedure. This significantly improves performance (by about 10%), because of the large number of output categories and the fact that most of the test images do not depict any landmark, and it is clearly computationally cheaper than training additional models.
+At prediction, I used several (22 for the scores given above) crops of each image and calculated the image category and confidence by a simple voting procedure. This significantly improves performance (by about 10%), because of the large number of output categories and the fact that most of the test images do not depict any 
+
+ark, and it is clearly computationally cheaper than training additional models.
