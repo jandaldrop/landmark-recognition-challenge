@@ -46,6 +46,4 @@ To better supervise training, I implemented a custom metric `batch_GAP`, which c
 
 #### 22 crops at prediction
 
-At prediction, I used several (22 for the scores given above) crops of each image and calculated the image category and confidence by a simple voting procedure. This significantly improves performance (by about 10%), because of the large number of output categories and the fact that most of the test images do not depict any 
-
-ark, and it is clearly computationally cheaper than training additional models.
+At prediction, I used several (22 for the scores given above) crops of each image and calculated the image category and confidence by a simple voting procedure. This significantly improves performance (by about 10%), because of the large number of output categories and the fact that most of the test images do not depict any landmark (and it is clearly computationally cheaper than training additional models).
